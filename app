@@ -23,5 +23,7 @@ def track():
     print(f"{click_time} - 點擊來自 {user_ip} - 目標：{target}")
     return redirect(target)
 
-# ⚠️ 不要寫 app.run()
+app = Flask(__name__)
+
+
 
