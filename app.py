@@ -1,4 +1,4 @@
-from flask import Flask, redirect, request
+from flask import Flask, redirect, request, send_file
 import datetime
 import csv
 import os
@@ -9,7 +9,6 @@ CSV_FILE = "clicks.csv"
 # 取得使用者真實 IP
 def get_client_ip():
     if "X-Forwarded-For" in request.headers:
-        # 多個 IP 以逗號分隔，第一個是客戶端真實 IP
         return request.headers["X-Forwarded-For"].split(",")[0].strip()
     else:
         return request.remote_addr
@@ -41,3 +40,10 @@ def logs():
     with open(CSV_FILE, "r", encoding="utf-8") as f:
         content = f.read().replace("\n", "<br>")
     return content
+
+# 下載 CSV 檔案
+@app.route("/download")
+def download():
+    if not os.path.isfile(CSV_FILE):
+        return "No logs yet."
+    return send_file(CSV_FILE, as_attachment=True)
