@@ -17,7 +17,7 @@ def get_client_ip():
 @app.route("/")
 @app.route("/track")
 def track():
-    target = "https://reurl.cc/MMOOMk"  # 改成你想跳轉的網址
+    target = "https://youtu.be/LjhCEhWiKXk?si=m5htnGjhwU96qN4X"  # 改成你想跳轉的網址
     click_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     user_ip = get_client_ip()
 
@@ -47,3 +47,4 @@ def download():
     if not os.path.isfile(CSV_FILE):
         return "No logs yet."
     return send_file(CSV_FILE, as_attachment=True)
+
