@@ -6,6 +6,7 @@ import os
 app = Flask(__name__)
 CSV_FILE = "clicks.csv"
 
+@app.route("/")
 @app.route("/track")
 def track():
     target = "https://www.youtube.com/"  # 改成你想跳轉的網址
@@ -22,9 +23,3 @@ def track():
 
     print(f"{click_time} - 點擊來自 {user_ip} - 目標：{target}")
     return redirect(target)
-
-app = Flask(__name__)
-
-
-
-
