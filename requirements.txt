@@ -8,11 +8,11 @@ CSV_FILE = "clicks.csv"
 
 @app.route("/track")
 def track():
-    target = "https://www.youtube.com/"  # ← 改成你想跳轉的網址
+    target = "https://www.youtube.com/"  # 改成你想跳轉的網址
     click_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     user_ip = request.remote_addr
 
-    # 將點擊記錄存入 CSV
+    # 寫入 CSV
     file_exists = os.path.isfile(CSV_FILE)
     with open(CSV_FILE, mode="a", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
@@ -24,4 +24,3 @@ def track():
     return redirect(target)
 
 # ⚠️ 不要寫 app.run()
-
