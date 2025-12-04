@@ -11,4 +11,4 @@ def track():
     print(f"{click_time} - 點擊來自 {user_ip} - 目標：{target}")
     return redirect(target)
 
-# ⚠️ 刪掉 app.run(...)，由 Gunicorn 控制
+# ⚠️ 注意：不要寫 app.run()
